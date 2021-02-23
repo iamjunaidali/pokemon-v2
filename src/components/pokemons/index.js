@@ -9,9 +9,13 @@ const PokemonList = () => {
   const [evolutionMode, setEvolutionMode] = useState(false);
 
   useEffect(() => {
+    setDefaults();
+  }, []);
+
+  const setDefaults = () => {
     actions.getPokemons(setPokemons, setPreviousPage, setNextPage);
     setEvolutionMode(false);
-  }, []);
+  }
 
   const getPreviousPage = () => {
     actions.getPokemons(setPokemons, setPreviousPage, setNextPage, previousPage.split("/v2")[1]);
@@ -27,9 +31,8 @@ const PokemonList = () => {
   }
 
   return <>
-    <a className="heading" href="/">
-      <h3>POKEMONS</h3>
-    </a>
+    <h3 className="heading" onClick={setDefaults}>POKEMONS</h3>
+
     <div className="pokemon--species--list">
       {pokemons && pokemons.map((pokemon, index) =>
         <Pokemon key={pokemon.url}
