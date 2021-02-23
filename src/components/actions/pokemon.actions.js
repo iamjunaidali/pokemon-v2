@@ -1,5 +1,5 @@
 import * as pokemonService from '../../services/pokemonService';
-import { parseIdFromUrl } from '../../utils/utils';
+import { parseIdFromUrl, initializePokemon } from '../../utils/utils';
 
 export function getPokemons(setPokemons, setPreviousPage, setNextPage, query) {
   return (
@@ -16,20 +16,7 @@ export function getPokemon(name, setPokemon) {
     return (
       pokemonService.getPokemon(name))
         .then((response) => {
-            let pokemon = response.data;
-            setPokemon({
-                id: pokemon["id"],
-                name: pokemon["name"],
-                sprites: pokemon.sprites,
-                height: pokemon["height"],
-                weight: pokemon["weight"],
-                speed: pokemon["stats"][0]["base_stat"],
-                special_defense: pokemon["stats"][1]["base_stat"],
-                special_attack: pokemon["stats"][2]["base_stat"],
-                defense: pokemon["stats"][3]["base_stat"],
-                attack: pokemon["stats"][4]["base_stat"],
-                hp: pokemon["stats"][5]["base_stat"]
-            });
+            setPokemon(initializePokemon(response.data));
         })
         .catch((error) => { alert(error.message) });
 }
@@ -47,7 +34,6 @@ export function getEvolutions(id, setPokemons, initial = []) {
             }
             initial.push(pokemon);
             if (evolutions.hasOwnProperty('evolves_to')) {
-
                 evolutions.evolves_to.map((evolution) => getEvolutions(parseIdFromUrl(evolution.species.url), setPokemons, initial));
             }
         })

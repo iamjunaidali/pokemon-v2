@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import * as actions from '../actions/pokemon.actions';
+import { getPokemon } from '../actions/pokemon.actions';
 import { Icon } from '@material-ui/core';
 import Info from './info';
 import { playImages } from '../../utils/utils';
@@ -7,10 +7,10 @@ import { playImages } from '../../utils/utils';
 const Pokemon = ({ name, getEvolutions, evolutionMode }) => {
 
   const [pokemon, setPokemon] = useState(null);
-  const [infoOpen, setInfoOpen] = React.useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
 
   useEffect(() => {
-    actions.getPokemon(name, setPokemon);
+    getPokemon(name, setPokemon);
   }, []);
 
   const openInfo = () => {

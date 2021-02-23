@@ -17,4 +17,35 @@ export const playImages = (pokemon) => {
         images.splice(0, 1);
       }
     }, (Math.floor(Math.random() * 3) + 1) * 1000);
-  }
+}
+
+export const initializePokemon = (pokemon) => {
+    return {
+        id: pokemon["id"],
+        name: pokemon["name"],
+        sprites: pokemon.sprites,
+        height: pokemon["height"],
+        weight: pokemon["weight"],
+        speed: pokemon["stats"][0]["base_stat"],
+        special_defense: pokemon["stats"][1]["base_stat"],
+        special_attack: pokemon["stats"][2]["base_stat"],
+        defense: pokemon["stats"][3]["base_stat"],
+        attack: pokemon["stats"][4]["base_stat"],
+        hp: pokemon["stats"][5]["base_stat"],
+        gender: pokemon.sprites.back_female ? 'Female' : 'Male'
+    };
+}
+
+export const getPokemonProperties = () => {
+    return [
+        { title: 'Gender', key: 'gender' },
+        { title: 'Height', key: 'height' },
+        { title: 'Weight', key: 'weight' },
+        { title: 'Speed', key: 'speed' },
+        { title: 'Special Defense', key: 'special_defense' },
+        { title: 'Special Attack', key: 'special_attack' },
+        { title: 'Defense', key: 'defense' },
+        { title: 'Attack', key: 'attack' },
+        { title: 'HP', key: 'hp' }
+    ]
+}

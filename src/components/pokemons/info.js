@@ -1,10 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
+import Properties from './properties';
 import {
     Table,
-    TableBody,
-    TableRow,
-    TableCell
+    TableBody
 } from '@material-ui/core';
 
 const infoModalStyles = {
@@ -33,42 +32,7 @@ const Info = ({ pokemon, infoOpen, closeInfo, playImages }) => {
             </div>
             <Table>
                 <TableBody>
-                    <TableRow>
-                        <TableCell>Gender</TableCell>
-                        <TableCell>{pokemon.sprites.back_female ? 'Female' : 'Male'}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Height</TableCell>
-                        <TableCell>{pokemon.height}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Weight</TableCell>
-                        <TableCell>{pokemon.weight}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Speed</TableCell>
-                        <TableCell>{pokemon.speed}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Special Defense</TableCell>
-                        <TableCell>{pokemon.special_defense}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Special Atatck</TableCell>
-                        <TableCell>{pokemon.special_attack}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Defense</TableCell>
-                        <TableCell>{pokemon.defense}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Attack</TableCell>
-                        <TableCell>{pokemon.attack}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>HP</TableCell>
-                        <TableCell>{pokemon.hp}</TableCell>
-                    </TableRow>
+                    <Properties pokemon={pokemon} />
                 </TableBody>
             </Table>
             <button className="margin10" onClick={closeInfo}>close</button>
