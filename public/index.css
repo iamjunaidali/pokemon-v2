@@ -20,6 +20,11 @@ HTML, body{
   font-size: 12px;
   cursor: pointer;
 }
+.text-center{
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
 .pokemon--species--list{
   display : -webkit-box;
   display : -ms-flexbox;

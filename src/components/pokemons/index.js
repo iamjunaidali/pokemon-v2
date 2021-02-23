@@ -40,6 +40,8 @@ const PokemonList = () => {
           getEvolutions={getEvolutions}
           evolutionMode={pokemons.length-1 == index ? false : evolutionMode}
         />)}
+
+      {pokemons.length == 0 && <div className="text-center">No { evolutionMode ? 'Evolution' : 'Pokemon' } Found.</div>}
     </div>
     { pokemons.length == 100 &&
       <span>

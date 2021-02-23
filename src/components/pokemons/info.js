@@ -35,7 +35,7 @@ const Info = ({ pokemon, infoOpen, closeInfo, playImages }) => {
                 <TableBody>
                     <TableRow>
                         <TableCell>Gender</TableCell>
-                        <TableCell>{pokemon.sprites.back_female ? 'Male' : 'Female'}</TableCell>
+                        <TableCell>{pokemon.sprites.back_female ? 'Female' : 'Male'}</TableCell>
                     </TableRow>
                     <TableRow>
                         <TableCell>Height</TableCell>
